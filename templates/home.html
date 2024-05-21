@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% comment %}CONTAINER TABLES{% endcomment %}
+  <div class="row d-inline-flex">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearEmpleadoModal">Registrar empleado <i class="bi bi-person-plus-fill"></i></button>
+  </div>
+  <div class="row py-5">
+    <table class="table table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido Paterno</th>
+          <th scope="col">Apellido Materno</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Cargo</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for empleado in empleados %}
+          <tr>
+            <th scope="row">{{ empleado.id }}</th>
+            <td>{{ empleado.nombre }}</td>
+            <td>{{ empleado.apellido_paterno }}</td>
+            <td>{{ empleado.apellido_materno }}</td>
+            <td>{{ empleado.correo }}</td>
+            <td>{{ empleado.telefono }}</td>
+            <td>{{ empleado.cargo }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <form action=""></form>
+  {{ form }}
+  {% include 'includes/modal/createModal.html' %}
+{% endblock %}

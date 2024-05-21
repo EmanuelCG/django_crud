@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'personal'
+    'empleados'
 ]
 
 MIDDLEWARE = [
@@ -75,14 +76,17 @@ WSGI_APPLICATION = 'crud.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# cargando variavles de entorno de .env
+load_dotenv()
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # ENGINE es motor de BD
-        'NAME': 'bd_django_personal',
-                'USER': 'root',
-                'PASSWORD': os.environ.get('DB_PASSWORD'),
-                'HOST': '127.0.0.1',
-                'PORT': '3306',
+        'NAME': 'bd_empleados',
+        'USER': 'root',
+        'PASSWORD': os.getenv('BD_PASSWORD'),
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
