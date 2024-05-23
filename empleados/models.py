@@ -1,5 +1,6 @@
 from django.db import models
 from area.models import Area
+from cargo.models import Cargo
 # Create your models here.
 
 
@@ -12,6 +13,8 @@ class Empleados(models.Model):
     telefono = models.CharField(max_length=20, blank=False)
     area = models.ForeignKey(
         Area, on_delete=models.CASCADE, null=True, blank=True)
+    cargo = models.ForeignKey(
+        Cargo, on_delete=models.CASCADE, null=True, blank=True)
     image_profile = models.ImageField(
         upload_to='photos/profile', null=True, blank=True)
     estado = models.BooleanField(default=True)

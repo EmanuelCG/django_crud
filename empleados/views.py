@@ -1,25 +1,25 @@
 from django.shortcuts import render, redirect
 from .forms import EmpleadoForm
 from .models import Empleados
-# Create your views here.
+from django.http import JsonResponse
 
 
-def mostrar_empleados(request):
+def get_empleados(request):
     empleados = Empleados.objects.all()
     form = EmpleadoForm()
-    return render(request, 'home.html', {'empleados': empleados, 'form': form})
+    return render(request, 'empleados.html', {'empleados': empleados, 'form': form})
 
 
-def nuevo_empleado(request):
-    context = {}
+def guardar_empleado(request):
     if request.method == 'POST':
         form = EmpleadoForm(request.POST)
         if form.is_valid():
-            try:
-                form.save()
-                return redirect('/home')
-            except:
-                pass
+            form.save()
+            return redirect('get_empleados')
     else:
-        context['form'] = EmpleadoForm()
-    return render(request, 'home.html', context)
+        form = EmpleadoForm()
+        return render(request, 'empleados.html')
+
+
+def profile_empleado(request):
+    return render(request, 'includes/detalleEmpleado.html')
