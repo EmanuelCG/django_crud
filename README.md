@@ -58,7 +58,7 @@ Desarrollo de crud para edicion de empleados, con ventanas modales, alerts de dj
 
 ## Uso
 
-Breve descripción de cómo usar tu proyecto y cualquier configuración adicional que pueda ser necesaria.
+Libre uso ☕
 
 ## Contribución
 
