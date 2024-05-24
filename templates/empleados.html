@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
   {% comment %}CONTAINER TABLES{% endcomment %}
   <div class="row d-inline-flex">
@@ -7,10 +7,10 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearEmpleadoModal">Registrar empleado <i class="bi bi-person-plus-fill"></i></button>
   </div>
   <div class="row py-5">
-    <table class="table table-striped">
+    <table class="table table-striped align-middle">
       <thead class="table-dark">
         <tr>
-          <th scope="col">ID</th>
+          <th scope="col"></th>
           <th scope="col">Nombre</th>
           <th scope="col">Apellido Paterno</th>
           <th scope="col">Apellido Materno</th>
@@ -24,7 +24,13 @@
       <tbody id="table_empleados">
         {% for empleado in empleados %}
           <tr>
-            <th scope="row">{{ empleado.id }}</th>
+            <th>
+              {% if empleado.image_profile %}
+                <img class="image-profile" src="{{ empleado.image_profile.url }}" />
+              {% else %}
+                <img class="image-profile" src="{% static 'images/default_profile.jpg' %}" />
+              {% endif %}
+            </th>
             <td>{{ empleado.nombre }}</td>
             <td>{{ empleado.apellido_paterno }}</td>
             <td>{{ empleado.apellido_materno }}</td>
@@ -33,13 +39,13 @@
             <td>{{ empleado.area }}</td>
             <td>{{ empleado.cargo }}</td>
             <td>
-              <a href="{% url 'profile_empleado' %}" type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-              <button type="button" class="btn btn-danger"><i class="bi bi-database-fill-dash"></i></button>
+              <a href="{% url 'profile_empleado' empleado.id %}" type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+              {% comment %} <button type="button" class="btn btn-danger"><i class="bi bi-database-fill-dash"></i></button> {% endcomment %}
             </td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
-  {% include 'includes/modal/editarModal.html' %}
+  {% include 'includes/modal/createModal.html' %}
 {% endblock %}

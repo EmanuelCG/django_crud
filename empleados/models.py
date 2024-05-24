@@ -16,7 +16,7 @@ class Empleados(models.Model):
     cargo = models.ForeignKey(
         Cargo, on_delete=models.CASCADE, null=True, blank=True)
     image_profile = models.ImageField(
-        upload_to='photos/profile', null=True, blank=True)
+        upload_to='profile/', null=True, blank=True)
     estado = models.BooleanField(default=True)
     f_inicio = models.DateField(null=True, blank=True)
     f_cese = models.DateField(null=True, blank=True)

@@ -8,7 +8,7 @@ class EmpleadoForm(forms.ModelForm):
     class Meta:
         model = Empleados
         fields = ['nombre', 'apellido_materno',
-                  'apellido_paterno', 'doc_identidad', 'correo', 'telefono', 'area', 'cargo']
+                  'apellido_paterno', 'doc_identidad', 'correo', 'telefono', 'area', 'cargo', 'image_profile']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

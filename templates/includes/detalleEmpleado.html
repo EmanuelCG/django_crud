@@ -1,5 +1,74 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
-  <h2>Holaaa</h2>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-3">
+        <div class="row">
+          {% if empleado.image_profile %}
+            <img class="rounded-circle mx-auto profile-image mb-5" src="{{ empleado.image_profile.url }}" />
+          {% else %}
+            <img class="rounded-circle mx-auto profile-image mb-5" src="{% static 'images/default_profile.jpg' %}" />
+          {% endif %}
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editarEmpleadoModal"><i class="bi bi-pencil-fill"></i> Editar</button>
+          </div>
+          <div class="col text-center">
+            <form id="eliminarEmpleadoForm" action="{% url 'eliminar_empleado' empleado.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger">Eliminar <i class="bi bi-dash-circle"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-9">
+        <table class="table mx-auto">
+          <thead class="table-secondary">
+            <tr>
+              <th scope="col" colspan="2">Datos de empleado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Nombre:</th>
+              <td>{{ empleado.nombre }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Apellido paterno:</th>
+              <td>{{ empleado.apellido_paterno }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Apellido Materno:</th>
+              <td>{{ empleado.apellido_materno }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Doc. identidad:</th>
+              <td>{{ empleado.doc_identidad }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Correo:</th>
+              <td>{{ empleado.correo }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Telefono:</th>
+              <td>{{ empleado.telefono }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Area:</th>
+              <td>{{ empleado.area }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Cargo:</th>
+              <td>{{ empleado.cargo }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% include 'includes/modal/editarModal.html' %}
 {% endblock %}

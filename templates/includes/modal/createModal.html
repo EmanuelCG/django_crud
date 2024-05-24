@@ -6,7 +6,7 @@
         <h5 class="modal-title" id="crearEmpleadoModalLabelLabel">Crear empleados</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form method="POST" action="{% url 'create_empleado' %}">
+      <form method="POST" action="{% url 'create_empleado' %}" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="modal-body">
           <div class="row mb-2">
@@ -47,6 +47,12 @@
             <div class="col-md-6">
               <label for="area">Cargo</label>
               {{ form.cargo }}
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-6">
+              <label for="area">Imagen de perfil</label>
+              {{ form.image_profile }}
             </div>
           </div>
           <div class="row mb-2">

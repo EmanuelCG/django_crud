@@ -1,0 +1,12 @@
+.profile-image {
+    max-width: 200px;
+}
+
+div #message {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+img.image-profile {
+    width: 50px;
+}

@@ -3,17 +3,16 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="crearEmpleadoModalLabelLabel">Editar empleado</h5>
+        <h5 class="modal-title" id="editarEmpleadoModalLabel">Editar empleado</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="{% url 'create_empleado' %}" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="modal-body">
           <div class="row mb-2">
             <div class="col-md-6">
               <label for="nombre">Nombres completos</label>
               {{ form.nombre }}
-              <input type="text" id="id_nombre" value="" />
             </div>
             <div class="col-md-6">
               <label for="a_paterno">Apellido paterno</label>
@@ -47,8 +46,13 @@
             </div>
             <div class="col-md-6">
               <label for="area">Cargo</label>
-
               {{ form.cargo }}
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-12">
+              <label for="area">Imagen de perfil</label>
+              {{ form.image_profile }}
             </div>
           </div>
           <div class="row mb-2">
@@ -61,7 +65,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary">Crear empleado</button>
+          <button type="submit" class="btn btn-primary">Guardar cambios</button>
         </div>
       </form>
     </div>

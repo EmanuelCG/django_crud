@@ -5,7 +5,7 @@ from cargo.models import Cargo
 
 class Area(models.Model):
     nombre = models.CharField(max_length=100, null=True)
-    cargo = models.ManyToManyField(Cargo)
+    # cargo = models.ManyToManyField(Cargo)
     descripcion = models.TextField(null=True)
 
     class Meta:
