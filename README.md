@@ -1,5 +1,5 @@
 # DJANGO CRUD
-Desarrollo de crud para edicion de empleados, con ventanas modales, alerts de django y la libreria SweetAlert2: https://sweetalert2.github.io/
+Desarrollo de crud para edicion de empleados, con ventanas modales bootstrap 5, alerts Django y SweetAlert2: https://sweetalert2.github.io/
 
 ## Instalación
 
